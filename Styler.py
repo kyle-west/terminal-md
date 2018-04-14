@@ -30,7 +30,7 @@ def sRep(char, times):
 
 class Styler:
    def __init__(self, styling = 'auto'):
-      self.baseH = Style.BRIGHT + bg.WHITE + fg.BLUE
+      self.baseH = Style.BRIGHT + fg.BLUE
 
       self.styling = styling
       if (styling == 'auto'):
@@ -41,42 +41,42 @@ class Styler:
 
    def h1(self, msg =""):
       form = self.baseH 
-      sep = sRep(" ", 8) 
+      sep = sRep(" ", 16) 
       h = sep + msg + sep 
       line = sRep("*", len(h))
       return form + line + ENDL + form + h + ENDL + form + line + END
    
    def h2(self, msg =""): 
       form = self.baseH + Style.NORMAL
-      sep = sRep(" ", 6) 
+      sep = sRep(" ", 14) 
       h = sep + msg + sep 
       line = sRep("=", len(h))
       return form + line + ENDL + form + h + ENDL + form + line + END
    
    def h3(self, msg =""): 
       form = self.baseH + Style.DIM
-      sep = sRep(" ", 4) 
+      sep = sRep(" ", 12) 
       h = sep + msg + sep 
       line = sRep("+", len(h))
       return form + line + ENDL + form + h + ENDL + form + line + END
    
    def h4(self, msg =""): 
       form = self.baseH + fg.MAGENTA
-      sep = sRep(" ", 4) 
+      sep = sRep(" ", 10) 
       h = sep + msg + sep 
       line = sRep("-", len(h))
       return form + line + ENDL + form + h + ENDL + form + line + END
    
    def h5(self, msg =""): 
       form = self.baseH + fg.MAGENTA + Style.NORMAL
-      sep = sRep(" ", 2) 
+      sep = sRep(" ", 8) 
       h = sep + msg + sep 
       line = sRep("-", len(h))
       return form + line + ENDL + form + h + ENDL + form + line + END
    
    def h6(self, msg =""): 
       form = self.baseH + fg.MAGENTA + Style.DIM
-      sep = " " 
+      sep = sRep(" ", 4) 
       h = sep + msg + sep 
       line = sRep("-", len(h))
       return form + line + ENDL + form + h + ENDL + form + line + END

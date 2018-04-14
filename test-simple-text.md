@@ -9,11 +9,15 @@ Normal *Italics* **Bold** ***Bold Italics***
 
 Normal _Italics_ __Bold__ **_Bold Italics_**
 
-This sentence is **complicated _bold and italic_**.
+This sentence is has a **complicated _bold and italic_** phrase.
 
-Two **Bold words**
+This sentence has 
+two **Bold words** 
+and a ~~Strike Through~~ 
+in it.
 
-~~Strike Through~~
+
+
 
 This should be on the same
 line as this text.
