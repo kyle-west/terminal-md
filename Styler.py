@@ -16,7 +16,7 @@ Style.ITALIC = "\033[3m"
 Style.UNDERLINE = "\033[4m"
 Style.STRIKE = "\033[9m"
 
-Style.BOLD2 = bg.CYAN
+Style.BOLD2 = bg.RED
 Style.ITALIC2 = fg.MAGENTA
 Style.UNDERLINE2 = fg.RED
 Style.STRIKE2 = Style.DIM + fg.BLACK + bg.BLACK
