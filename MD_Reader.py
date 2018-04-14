@@ -22,14 +22,29 @@ class MD_Reader:
    def identifyParse(self, line):
       l2 = ""
       header = 0
+      B, I = False, False
+      sig = ""
 
       for word in line.split():
-         if   (word == "#"): header = 1
-         elif (word == "##"): header = 2
-         elif (word == "###"): header = 3
-         elif (word == "####"): header = 4
-         elif (word == "#####"): header = 5
-         elif (word == "######"): header = 6
+         if (word[0] == "#"): 
+            header = len(word)
+
+         elif (word[0] == "*" or word[0] == "_"):
+            sig += word[0]
+            if (word[1] == word[0]):
+               B = True
+               sig += word[1]
+               if (word[2] == "*" or word[2] == "_"):
+                  I = True
+                  sig += word[2]
+            else:
+               I = True
+            tmp = word[(len(sig)):-(len(sig))]
+            if (I): tmp = S.i(tmp)
+            if (B): tmp = S.b(tmp)
+            l2 += tmp + " "
+            B, I, sig = False, False, ""
+
          else: l2 += word + " "
 
       if (header > 0): l2 = self.header[header](l2)
