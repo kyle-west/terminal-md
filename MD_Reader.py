@@ -15,41 +15,26 @@ class MD_Reader:
       }
    
    def read(self, filename):
-      with open(filename, "r") as file:
-         for line in file:
-            print(self.identifyParse(line))
+      self.identifyParse(open(filename, 'r').read())
    
-   def identifyParse(self, line):
-      l2 = ""
+   def identifyParse(self, filestr):
+      buffer = ""
       header = 0
-      B, I = False, False
-      sig = ""
 
-      for word in line.split():
-         if (word[0] == "#"): 
-            header = len(word)
-
-         elif (word[0] == "*" or word[0] == "_"):
-            sig += word[0]
-            if (word[1] == word[0]):
-               B = True
-               sig += word[1]
-               if (word[2] == "*" or word[2] == "_"):
-                  I = True
-                  sig += word[2]
+      for char in filestr:
+         if (char == "#"):
+            header += 1
+         elif (char == "\n"):
+            if (header > 0):
+               print(self.header[header](buffer))
+               header = 0
             else:
-               I = True
-            tmp = word[(len(sig)):-(len(sig))]
-            if (I): tmp = S.i(tmp)
-            if (B): tmp = S.b(tmp)
-            l2 += tmp + " "
-            B, I, sig = False, False, ""
+               print(buffer)
+            buffer = ""
+         else:
+            buffer += char
+         
 
-         else: l2 += word + " "
-
-      if (header > 0): l2 = self.header[header](l2)
-
-      return l2
 
 
 if __name__ == "__main__":
